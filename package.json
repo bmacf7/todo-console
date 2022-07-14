@@ -18,6 +18,9 @@
   },
   "homepage": "https://github.com/bmacf7/todo-console#readme",
   "dependencies": {
-    "colors": "^1.4.0"
+    "colors": "^1.4.0",
+    "dotenv": "^16.0.1",
+    "inquirer": "^8.2.4",
+    "mongoose": "^6.4.4"
   }
 }
