@@ -1,13 +1,17 @@
-const { mostrarMenu, pausa } = require("./helpers/mensajes");
 require("colors");
+
+const { connectDB } = require("./src/db");
+const { menuOpt } = require("./src/handler");
+const { inquirerMenu, pausa } = require("./src/helpers/inquirer");
 
 const main = async () => {
   let opt = "";
+  await connectDB();
   do {
-    opt = await mostrarMenu();
-    if (opt !== "0") await pausa();
+    opt = await inquirerMenu();
+    await menuOpt(opt);
+    await pausa();
   } while (opt != "0");
-  console.clear();
 };
 
 main();
