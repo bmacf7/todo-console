@@ -1,0 +1,23 @@
+function getEvents() {
+  let spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
+  let sheet = spreadsheet.getSheetByName("GetEvents");
+
+  let calendar = CalendarApp.getCalendarById(""); // Events Calendar ID.
+  let events = calendar.getEvents(new Date("1/01/2013 12:00 AM"), new Date("1/25/2024 11:59 PM"));
+
+  for (let i = 0; i < events.length; i++) {
+    let title = events[i].getTitle();
+    let startTime = events[i].getStartTime();
+    let endTime = events[i].getEndTime();
+    let location = events[i].getLocation();
+    let description = events[i].getDescription();
+
+    sheet.getRange(i+2, 1).setValue(title);
+    sheet.getRange(i+2, 2).setValue(startTime);
+    sheet.getRange(i+2, 3).setValue(endTime);
+    sheet.getRange(i+2, 4).setValue(location);
+    sheet.getRange(i+2, 5).setValue(description);
+  }
+
+  Logger.log("Eventos añadidos con éxito.");
+}
